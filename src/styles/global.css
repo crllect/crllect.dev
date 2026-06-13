@@ -20,7 +20,7 @@
 	--blob-teal: rgba(148, 226, 213, 0.16);
 	--blob-peach: rgba(250, 179, 135, 0.16);
 
-	--shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+	--shadow: 0 9px 50px rgba(0, 0, 0, 0.05);
 
 	color-scheme: dark;
 }
