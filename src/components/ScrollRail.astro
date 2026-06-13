@@ -31,6 +31,7 @@ import Icon from './Icon.astro';
 		height: 100%;
 		margin: 0 auto;
 		--thumb-size: 22px;
+		--track-gap: 16px;
 	}
 
 	.trackTop,
@@ -50,7 +51,7 @@ import Icon from './Icon.astro';
 
 	.trackBottom {
 		bottom: 0;
-		height: 100%;
+		height: calc(100% - var(--thumb-size) / 2 - var(--track-gap));
 		background: color-mix(in oklab, var(--fg) 22%, transparent);
 	}
 
@@ -96,20 +97,21 @@ import Icon from './Icon.astro';
 
 	if (thumb && trackTop && trackBottom && inner) {
 		const update = () => {
-			const h = inner.clientHeight;
-			if (!h) return;
+			const scrollMax =
+				document.documentElement.scrollHeight - window.innerHeight;
 
+			const pct =
+				scrollMax <= 0
+					? 0
+					: Math.min(100, Math.max(0, (window.scrollY / scrollMax) * 100));
+
+			const styles = getComputedStyle(inner);
 			const thumbSize = thumb.offsetHeight || 22;
-			const min = thumbSize / 2;
-			const max = h - thumbSize / 2;
-			const top = parseFloat(getComputedStyle(thumb).top) || min;
-			const pct = Math.min(
-				100,
-				Math.max(0, ((top - min) / (max - min)) * 100)
-			);
+			const gap = parseFloat(styles.getPropertyValue('--track-gap')) || 16;
+			const offset = thumbSize / 2 + gap;
 
-			trackTop.style.height = `${pct}%`;
-			trackBottom.style.height = `${100 - pct}%`;
+			trackTop.style.height = `max(0px, calc(${pct}% - ${offset}px))`;
+			trackBottom.style.height = `max(0px, calc(${100 - pct}% - ${offset}px))`;
 		};
 
 		update();
