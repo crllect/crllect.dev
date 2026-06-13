@@ -37,7 +37,7 @@ const trailingIcon = (kind: string) => {
 	<section class="container section">
 		<Reveal client:load>
 			<SectionHeading title="Get in touch">
-				The fastest way to reach me is email. I'm open to internships,
+				The fastest way to reach me is discord. I'm open to internships,
 				collaborations, and interesting problems.
 			</SectionHeading>
 		</Reveal>
@@ -50,8 +50,8 @@ const trailingIcon = (kind: string) => {
 							<a
 								class="glow-card contact-row"
 								href={l.href}
-								target={l.kind === 'email' ? undefined : '_blank'}
-								rel={l.kind === 'email' ? undefined : 'noreferrer'}
+								target={l.kind === 'discord' ? undefined : '_blank'}
+								rel={l.kind === 'discord' ? undefined : 'noreferrer'}
 							>
 								<span class="contact-icon">
 									<Icon name={iconFor(l.kind)} size={20} />
