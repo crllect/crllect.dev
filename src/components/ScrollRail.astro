@@ -24,12 +24,15 @@ import Icon from './Icon.astro';
 		z-index: 40;
 		pointer-events: none;
 	}
+
 	.scrollerInner {
 		position: relative;
 		width: 2px;
 		height: 100%;
 		margin: 0 auto;
+		--thumb-size: 22px;
 	}
+
 	.trackTop,
 	.trackBottom {
 		position: absolute;
@@ -38,22 +41,25 @@ import Icon from './Icon.astro';
 		border-radius: 2px;
 		transform: translateX(-50%);
 	}
+
 	.trackTop {
 		top: 0;
 		height: 0;
 		background: var(--accent);
 	}
+
 	.trackBottom {
 		bottom: 0;
 		height: 100%;
 		background: color-mix(in oklab, var(--fg) 22%, transparent);
 	}
+
 	.thumb {
 		position: absolute;
-		top: 0;
+		top: calc(var(--thumb-size) / 2);
 		left: 50%;
-		width: 22px;
-		height: 22px;
+		width: var(--thumb-size);
+		height: var(--thumb-size);
 		transform: translate(-50%, -50%) rotate(180deg);
 		color: var(--accent);
 		animation-name: thumb-fall;
@@ -63,10 +69,11 @@ import Icon from './Icon.astro';
 
 	@keyframes thumb-fall {
 		from {
-			top: 0%;
+			top: calc(var(--thumb-size) / 2);
 		}
+
 		to {
-			top: 100%;
+			top: calc(100% - var(--thumb-size) / 2);
 		}
 	}
 
@@ -91,11 +98,20 @@ import Icon from './Icon.astro';
 		const update = () => {
 			const h = inner.clientHeight;
 			if (!h) return;
-			const top = parseFloat(getComputedStyle(thumb).top) || 0;
-			const pct = Math.min(100, Math.max(0, (top / h) * 100));
-			trackTop.style.height = `calc(${pct}% - 16px)`;
-			trackBottom.style.height = `calc(${100 - pct}% - 16px)`;
+
+			const thumbSize = thumb.offsetHeight || 22;
+			const min = thumbSize / 2;
+			const max = h - thumbSize / 2;
+			const top = parseFloat(getComputedStyle(thumb).top) || min;
+			const pct = Math.min(
+				100,
+				Math.max(0, ((top - min) / (max - min)) * 100)
+			);
+
+			trackTop.style.height = `${pct}%`;
+			trackBottom.style.height = `${100 - pct}%`;
 		};
+
 		update();
 		window.addEventListener('scroll', update, { passive: true });
 		window.addEventListener('resize', update);
