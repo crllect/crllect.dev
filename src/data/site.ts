@@ -1,5 +1,7 @@
 export const profile = {
-	email: 'leonardo.glorioso@gmail.com'
+	email: 'crllect@proton.me',
+	discordUsername: 'crllect',
+	discordId: '713488984596021291'
 } as const;
 
 export type NavLink = {
@@ -61,15 +63,15 @@ export const projects: Project[] = [
 		role: 'Co-developer',
 		period: '2024 — Present',
 		summary:
-			'A browser inside a browser — extensions, themes, tab groups, multi-profile support and cloud sync, all built from scratch.',
+			'A browser inside a browser with extensions, themes, tab groups, multi-profile support, and cloud sync.',
 		description: [
-			'DaydreamX is, in short, a browser that runs inside a browser. It gives people a full, customizable browsing surface with the kind of features you expect from a native browser.',
-			'As a co-developer I worked on the extension system, theming engine, bookmarks, tab groups, vertical tabs, multi-profile support, and cloud sync. The site is built on NightmareJS, our custom framework, with React and TypeScript on Bun. It runs under Night Network and reaches 500k+ daily users at peak.'
+			'DaydreamX is a browser that runs inside a browser, giving people a full, customizable browsing surface with the kind of features you expect from a native browser.',
+			'I contributed to the extension system, theming engine, bookmarks, tab groups, vertical tabs, multi-profile support, and cloud sync. The site is built on NightmareJS, our custom framework, with React and TypeScript on Bun. It runs under Night Network and reaches 500k+ daily users at peak.'
 		],
 		highlights: [
 			'Extension system, themes, bookmarks, tab groups, vertical tabs',
-			'Multi-profile support and cloud sync built from scratch',
-			'Co-developer; 500k+ daily users at peak'
+			'Multi-profile support and cloud sync',
+			'500k+ daily users at peak'
 		],
 		metric: { value: '500k+', label: 'daily users at peak' },
 		tags: ['NightmareJS', 'React', 'TypeScript', 'Bun'],
@@ -110,6 +112,32 @@ export const projects: Project[] = [
 		featured: true
 	},
 	{
+		slug: 'oxide',
+		name: 'Oxide',
+		role: 'Developer',
+		period: '2024 — Present',
+		summary:
+			'The official community site for TitaniumNetwork, one of the largest web proxy communities online.',
+		description: [
+			'Oxide is the public-facing home for TitaniumNetwork, an organization dedicated to bypassing internet censorship with some of the most widely used proxy technologies online.',
+			'I built the full UI and stack for the site: Next.js with React, TypeScript, Tailwind CSS, and Framer Motion. Night Network partners with TitaniumNetwork, and contributing to their community site was a natural extension of that relationship.'
+		],
+		highlights: [
+			'Full UI design and frontend implementation',
+			'Next.js with Framer Motion animations and Tailwind',
+			'Public-facing site for a community of ~30k members'
+		],
+		tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Framer Motion'],
+		links: [
+			{ label: 'titaniumnetwork.org', href: 'https://titaniumnetwork.org' },
+			{
+				label: 'github.com/titaniumnetwork-dev/Oxide',
+				href: 'https://github.com/titaniumnetwork-dev/Oxide'
+			}
+		],
+		featured: false
+	},
+	{
 		slug: 'aspine',
 		name: 'Aspine v3',
 		role: 'Developer · Maintainer',
@@ -142,7 +170,7 @@ export const projects: Project[] = [
 		summary:
 			'A polished online-ordering site for a neighborhood Cambridge market — light/dark, cart, and order flow.',
 		description: [
-			'A from-scratch online-ordering site for Harvard Market, a neighborhood market and kitchen in Cambridge. Browse the menu, build a cart, and place a pickup order — pay in person.',
+			'A from-scratch online-ordering site for Harvard Market, a neighborhood market and kitchen in Cambridge. Browse the menu, build a cart, and place a pickup order. Pay in person.',
 			'Built with Next.js and Tailwind: editorial light/dark theming, an accessible cart, and an order flow that emails the kitchen. A compact end-to-end product build.'
 		],
 		highlights: [
@@ -269,8 +297,8 @@ export const contactLinks: ContactLink[] = [
 	},
 	{
 		label: 'Discord',
-		value: '@crllect',
-		href: 'https://discord.com/users/713488984596021291',
+		value: profile.discordUsername,
+		href: `https://discord.com/users/${profile.discordId}`,
 		kind: 'discord'
 	},
 	{

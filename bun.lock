@@ -8,6 +8,7 @@
         "@astrojs/preact": "^4.0.1",
         "astro": "^5.1.1",
         "framer-motion": "^11.15.0",
+        "lucide-preact": "^1.18.0",
         "preact": "^10.25.3",
       },
       "devDependencies": {
@@ -556,6 +557,8 @@
     "longest-streak": ["longest-streak@3.1.0", "", {}, "sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g=="],
 
     "lru-cache": ["lru-cache@11.5.1", "", {}, "sha512-RPimw/7aMdv2oqRrxKwvZXcPfwBrn/JZ2xYcY9Hus/6LaS3VOAKVWKWgNLCFSiOm1ESXinjsDlidVU7JlnCN2A=="],
+
+    "lucide-preact": ["lucide-preact@1.18.0", "", { "peerDependencies": { "preact": "^10.27.2" } }, "sha512-wNVJVhzG4duzmSEh/Uh5qO7/K+Po2ISe8nBYi9ysx4YkeYmG6pu4k95CFZYiTN8VXlwExveEb9aIMa5DzItaiA=="],
 
     "magic-string": ["magic-string@0.30.21", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.5" } }, "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ=="],
 
