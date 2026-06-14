@@ -332,6 +332,6 @@ export const contactLinks: ContactLink[] = [
 
 export const repo = {
 	owner: 'crllect',
-	name: 'CS-Portfolio',
-	url: 'https://github.com/crllect/CS-Portfolio'
+	name: 'crllect.dev',
+	url: 'https://github.com/crllect/crllect.dev'
 } as const;
