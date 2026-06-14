@@ -2,22 +2,5 @@
 
 My personal site - [crllect.dev](https://crllect.dev). Built with **Astro**,
 **Tailwind CSS v4**, and **Preact islands** (with **Framer Motion** for the
-scroll reveals). Deployed to GitHub Pages.
-
-## Develop
-
-```bash
-bun install
-bun run dev        # http://localhost:4321
-```
-
-```bash
-bun run build      # static output to dist/
-bun run preview    # preview the production build
-```
-
-## Deploy
-
-Pushing to `main` triggers
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds
-with Bun and publishes `dist/` to GitHub Pages.
+scroll reveals). Deployed using GitHub Pages.
+<img width="2560" height="1252" alt="image" src="https://github.com/user-attachments/assets/defa73ea-803a-4426-97cc-214108b7c179" />
