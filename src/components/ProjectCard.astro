@@ -10,6 +10,19 @@ const primary = project.links[0];
 ---
 
 <article class="glow-card project-card">
+	{
+		project.image && (
+			<div class="project-shot">
+				<img
+					src={project.image.src}
+					alt={project.image.alt}
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+		)
+	}
+
 	<div class="project-top">
 		<div>
 			<h3 class="project-name">{project.name}</h3>
@@ -58,6 +71,28 @@ const primary = project.links[0];
 		gap: 1rem;
 		padding: 1.5rem;
 		height: 100%;
+	}
+	.project-shot {
+		margin: -1.5rem -1.5rem 0.25rem;
+		border-bottom: 1px solid var(--line);
+		overflow: hidden;
+	}
+	.project-shot img {
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: transform 0.45s ease;
+	}
+	.project-card:hover .project-shot img {
+		transform: scale(1.035);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.project-shot img {
+			transition: none;
+		}
+		.project-card:hover .project-shot img {
+			transform: none;
+		}
 	}
 	.project-top {
 		display: flex;

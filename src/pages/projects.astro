@@ -8,12 +8,12 @@ import { projects } from '../data/site';
 
 <Base
 	title="Projects"
-	description="Projects by Leonardo Glorioso — Night Network, DaydreamX, Space, Aspine, and more."
+	description="Projects by Leonardo Glorioso - Night Network, DaydreamX, Space, ProxDocs, Aspine, and more."
 >
 	<section class="container section">
 		<Reveal client:load>
 			<SectionHeading title="Things I've built">
-				The fuller story behind my work — what each project is, what I
+				The fuller story behind my work - what each project is, what I
 				built, and where to find it.
 			</SectionHeading>
 		</Reveal>
@@ -48,9 +48,20 @@ import { projects } from '../data/site';
 								))}
 							</div>
 
+							{p.image && (
+								<figure class="panel-shot">
+									<img
+										src={p.image.src}
+										alt={p.image.alt}
+										loading="lazy"
+										decoding="async"
+									/>
+								</figure>
+							)}
+
 							<div class="panel-cols">
 								<div>
-									<h3 class="panel-sub mono">What I built</h3>
+									<h3 class="panel-sub mono">Highlights</h3>
 									<ul class="panel-highlights">
 										{p.highlights.map(h => (
 											<li>{h}</li>
@@ -161,6 +172,18 @@ import { projects } from '../data/site';
 		color: var(--muted);
 		font-size: 1.02rem;
 		max-width: 70ch;
+	}
+	.panel-shot {
+		margin: 1.6rem 0 0;
+		border-radius: 12px;
+		border: 1px solid var(--line);
+		overflow: hidden;
+		line-height: 0;
+	}
+	.panel-shot img {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 	.panel-cols {
 		display: grid;

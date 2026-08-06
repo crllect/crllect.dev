@@ -22,6 +22,11 @@ export type ProjectLink = {
 	href: string;
 };
 
+export type ProjectImage = {
+	src: string;
+	alt: string;
+};
+
 export type Project = {
 	slug: string;
 	name: string;
@@ -33,6 +38,7 @@ export type Project = {
 	metric?: { value: string; label: string };
 	tags: string[];
 	links: ProjectLink[];
+	image?: ProjectImage;
 	featured: boolean;
 };
 
@@ -45,16 +51,30 @@ export const projects: Project[] = [
 		summary:
 			'A privacy- and access-focused web organization partnering with TitaniumNetwork. Developed Space, DaydreamX, and more.',
 		description: [
-			'Night Network is a web organization I co-own and help run. We build and operate a family of privacy- and access-focused web apps including Space and DaydreamX. We partner with TitaniumNetwork, and run several sub-organizations.',
-			'At peak we serve hundreds of thousands of users a day across our sites. My work spans product and frontend engineering, infrastructure and deployment, and helping coordinate development across the team. Our sites live on GitLab, with other projects on GitHub.'
+			'Night Network is a web organization I co-own and help run, building and operating a family of privacy- and access-focused web apps including Space and DaydreamX. The org has served over 6.5 million users in the past year.',
+			'A lot of the job is organizational rather than technical: coordinating development across a distributed team, running sub-organizations, and maintaining partnerships with TitaniumNetwork, Nebula Services, and TerbiumOS. The rest is product and fullstack engineering, infrastructure, and deployment. Our projects live on GitHub and GitLab.'
 		],
 		highlights: [
-			'Co-own the organization and build across its products',
-			'Partner with TitaniumNetwork and run multiple sub-orgs',
+			'Co-own the org and coordinate development across a distributed team',
+			'Run Lunar and our other sub-organizations',
+			'Maintain partnerships with TitaniumNetwork, Nebula Services, TerbiumOS, and Obsidian Developer Labs',
 			'Build and maintain frontends, backends, and deployment at scale'
 		],
-		tags: ['Leadership', 'Astro', 'TypeScript', 'Infrastructure'],
-		links: [{ label: 'night-x.com', href: 'https://night-x.com/' }],
+		metric: { value: '6.5M+', label: 'users in the past year' },
+		tags: [
+			'Leadership',
+			'Team coordination',
+			'Astro',
+			'TypeScript',
+			'Infrastructure'
+		],
+		links: [
+			{ label: 'night-network.org', href: 'https://night-network.org/' }
+		],
+		image: {
+			src: '/assets/projects/night-network.webp',
+			alt: 'The Night Network site, showing the org intro and its partners and sub-organizations'
+		},
 		featured: true
 	},
 	{
@@ -66,7 +86,7 @@ export const projects: Project[] = [
 			'A browser inside a browser with extensions, themes, tab groups, multi-profile support, and cloud sync.',
 		description: [
 			'DaydreamX is a browser that runs inside a browser, giving people a full, customizable browsing surface with the kind of features you expect from a native browser.',
-			'I contributed to the extension system, theming engine, bookmarks, tab groups, vertical tabs, multi-profile support, and cloud sync. The site is built on NightmareJS, our custom framework, with React and TypeScript on Bun. It runs under Night Network and reaches 500k+ daily users at peak.'
+			'I contributed to the frontend, theming engine, bookmarks, tab groups, vertical tabs and more. The site is built on NightmareJS, our custom framework, with TypeScript on Bun. It runs under Night Network and reaches 500k+ daily users at peak.'
 		],
 		highlights: [
 			'Extension system, themes, bookmarks, tab groups, vertical tabs',
@@ -74,7 +94,7 @@ export const projects: Project[] = [
 			'500k+ daily users at peak'
 		],
 		metric: { value: '500k+', label: 'daily users at peak' },
-		tags: ['NightmareJS', 'React', 'TypeScript', 'Bun'],
+		tags: ['NightmareJS', 'TypeScript', 'Bun'],
 		links: [
 			{ label: 'daydreamx.pro', href: 'https://daydreamx.pro' },
 			{
@@ -82,6 +102,10 @@ export const projects: Project[] = [
 				href: 'https://gitlab.com/nightnetwork/daydreamx'
 			}
 		],
+		image: {
+			src: '/assets/projects/daydreamx.webp',
+			alt: 'The DaydreamX new tab page, with a search bar, site shortcuts, tab strip, and vertical sidebar'
+		},
 		featured: true
 	},
 	{
@@ -109,13 +133,48 @@ export const projects: Project[] = [
 				href: 'https://gitlab.com/nightnetwork/space'
 			}
 		],
+		image: {
+			src: '/assets/projects/space.webp',
+			alt: 'The Space landing page, reading "Welcome to modern." over a purple nebula'
+		},
+		featured: true
+	},
+	{
+		slug: 'proxdocs',
+		name: 'ProxDocs',
+		role: 'Creator · Developer',
+		period: '2026 — Present',
+		summary:
+			'Documentation for building a web proxy from scratch, plus an interactive builder that generates a working project in your stack.',
+		description: [
+			'ProxDocs is a full tutorial on running your own web proxy with Scramjet, written to fill the gap between a short setup README and reading every upstream package yourself. It covers how a proxy actually works — the split between fetching bytes and rewriting them, transports, cross-origin isolation, and the internals of Scramjet — across concept, guide, and reference sections.',
+			'It also ships an interactive builder at /build that hands you a configured, working project instead of a starting point to adapt. You pick a language, package manager, runtime, server and frontend framework, transport, and features, and it generates the code to match. Written and maintained by me; AGPL-3.0.'
+		],
+		highlights: [
+			'~30 pages of concepts, guides, and reference written from scratch',
+			'Interactive builder that generates a working proxy in your chosen stack',
+			'Covers TypeScript/JavaScript, Node/Bun, Express/Fastify, React/Astro/Preact, and the libcurl, epoxy, and bare transports',
+			'Framework integration guides for Vite, Next.js, SvelteKit, Astro, and more'
+		],
+		tags: ['TypeScript', 'Scramjet', 'Technical writing', 'Codegen'],
+		links: [
+			{ label: 'docs.crllect.dev', href: 'https://docs.crllect.dev' },
+			{
+				label: 'github.com/crllect/ProxDocs',
+				href: 'https://github.com/crllect/ProxDocs'
+			}
+		],
+		image: {
+			src: '/assets/projects/proxdocs.webp',
+			alt: 'The ProxDocs overview page, "Building a web proxy", with the docs sidebar'
+		},
 		featured: true
 	},
 	{
 		slug: 'oxide',
 		name: 'Oxide',
 		role: 'Developer',
-		period: '2024 — Present',
+		period: '2026 — Present',
 		summary:
 			'The official community site for TitaniumNetwork, one of the largest web proxy communities online.',
 		description: [
@@ -138,13 +197,17 @@ export const projects: Project[] = [
 				href: 'https://github.com/titaniumnetwork-dev/Oxide'
 			}
 		],
+		image: {
+			src: '/assets/projects/oxide.webp',
+			alt: 'The TitaniumNetwork landing page built with Oxide, over a deep purple gradient'
+		},
 		featured: false
 	},
 	{
 		slug: 'aspine',
 		name: 'Aspine v3',
 		role: 'Developer · Maintainer',
-		period: '2024 — Present',
+		period: '2024 — 2025',
 		summary:
 			"An open-source, modern frontend for my school district's Aspen grade system.",
 		description: [
@@ -156,13 +219,24 @@ export const projects: Project[] = [
 			'Built for actual students',
 			'v3 rewrite — being revived'
 		],
-		tags: ['JavaScript', 'TypeScript', 'Open source'],
+		tags: [
+			'Astro',
+			'Preact',
+			'Bun',
+			'JavaScript',
+			'TypeScript',
+			'Open source'
+		],
 		links: [
 			{
 				label: 'github.com/Aspine/aspine3',
 				href: 'https://github.com/Aspine/aspine3'
 			}
 		],
+		image: {
+			src: '/assets/projects/aspine.webp',
+			alt: 'The Aspine v3 landing page, reading "Welcome to Aspine v3 — Aspen, reborn"'
+		},
 		featured: false
 	},
 	{
@@ -192,6 +266,10 @@ export const projects: Project[] = [
 				href: 'https://github.com/crllect/HarvardMarket'
 			}
 		],
+		image: {
+			src: '/assets/projects/harvard-market.webp',
+			alt: 'The Harvard Market homepage, with the menu hero and customer favorites'
+		},
 		featured: false
 	}
 ];
@@ -243,6 +321,41 @@ export const skills: SkillGroup[] = [
 	}
 ];
 
+export type ExperienceItem = {
+	org: string;
+	role: string;
+	period: string;
+	summary: string;
+	href?: string;
+	current?: boolean;
+};
+
+export const experience: ExperienceItem[] = [
+	{
+		org: 'Audible',
+		role: 'Intern · Future Leaders',
+		period: '2026',
+		summary: 'Paid Intern at Audible through the Future Leaders program.',
+		href: 'https://audible.com',
+		current: true
+	},
+	{
+		org: 'Night Network',
+		role: 'Co-owner · Developer',
+		period: '2023 — Present',
+		summary:
+			'Co-own and help run a privacy- and access-focused web organization: coordinating development across a distributed team, running our sub-organizations, and building the products themselves.',
+		href: 'https://night-network.org/'
+	},
+	{
+		org: 'School district IT',
+		role: 'Security research',
+		period: 'Ongoing',
+		summary:
+			'Responsibly disclosed device and network findings to my school district and helped patch them. Some details kept confidential.'
+	}
+];
+
 export type Recognition = {
 	title: string;
 	org: string;
@@ -268,12 +381,6 @@ export const recognition: Recognition[] = [
 		org: "MIT Blueprint '25",
 		period: '2025',
 		note: 'Weekend learnathon & hackathon for high-schoolers.'
-	},
-	{
-		title: 'Security research',
-		org: 'School district IT',
-		period: 'Ongoing',
-		note: 'Responsibly disclosed device and network findings and helped patch them (some details kept confidential).'
 	}
 ];
 
@@ -306,8 +413,8 @@ export const contactLinks: ContactLink[] = [
 	},
 	{
 		label: 'Night Network',
-		value: 'night-x.com',
-		href: 'https://night-x.com/',
+		value: 'night-network.org',
+		href: 'https://night-network.org/',
 		kind: 'site'
 	},
 	{
