@@ -1,5 +1,6 @@
 ---
 import { nav, repo } from '../data/site';
+import { buildSha } from '../lib/buildInfo';
 import CommitBadge from './CommitBadge.tsx';
 import MobileNav from './MobileNav.tsx';
 import Icon from './Icon.astro';
@@ -45,6 +46,7 @@ const isActive = (href: string) =>
 					owner={repo.owner}
 					name={repo.name}
 					url={repo.url}
+					buildSha={buildSha}
 				/>
 			</div>
 			<MobileNav client:load links={nav} pathname={pathname} />

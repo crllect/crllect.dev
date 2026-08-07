@@ -318,11 +318,18 @@ a {
 	color: var(--fg);
 }
 .commit-dot {
+	--dot: #4ade80;
 	width: 7px;
 	height: 7px;
 	border-radius: 50%;
-	background: #4ade80;
-	box-shadow: 0 0 0 3px color-mix(in oklab, #4ade80 25%, transparent);
+	background: var(--dot);
+	box-shadow: 0 0 0 3px color-mix(in oklab, var(--dot) 25%, transparent);
+	transition:
+		background-color 0.25s ease,
+		box-shadow 0.25s ease;
+}
+.commit-dot.is-stale {
+	--dot: #fb923c;
 }
 
 .mobile-drawer {
