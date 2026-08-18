@@ -267,8 +267,42 @@ const featured = projects.filter(p => p.featured);
 	<section class="container section">
 		<Reveal client:visible>
 			<div class="glow-card contact-cta">
+				<script>
+				  const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
+				  document.querySelectorAll('.typewriter').forEach(el => {
+				    const orig = el.textContent?.trim() || 'good';
+				    el.innerHTML = `<span class="t">${orig}</span><span class="c">|</span>`;
+				    const txt = el.querySelector('.t') as HTMLElement;
+				    const obs = new IntersectionObserver(([entry]) => {
+				      if (entry.isIntersecting) {
+				        obs.unobserve(el);
+				        (async () => {
+				          await wait(3000);
+				          let cur = orig;
+				          while (cur.length > 0) {
+				            await wait(200);
+				            cur = cur.slice(0, -1);
+				            txt.textContent = cur;
+				          }
+				          await wait(400);
+				          for (const char of 'great') {
+				            await wait(100);
+				            txt.textContent += char;
+				          }
+				        })();
+				      }
+				    }, { threshold: 0.2 });
+				    obs.observe(el);
+				  });
+				</script>
+				
+				<style is:global>
+				  .c { animation: b 0.75s step-end infinite; }
+				  @keyframes b { from, to { opacity: 1 } 50% { opacity: 0 } }
+				</style>
+
 				<h2 class="cta-title">
-					Let's build something <span class="serif">good</span>.
+					Let's build something <span class="serif typewriter">good</span>.
 				</h2>
 				<p class="cta-lead">
 					Open to internships, collaborations, and interesting
