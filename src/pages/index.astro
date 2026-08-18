@@ -268,35 +268,41 @@ const featured = projects.filter(p => p.featured);
 		<Reveal client:visible>
 			<div class="glow-card contact-cta">
 				<script>
-				  const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
-				  document.querySelectorAll('.typewriter').forEach(el => {
-				    const orig = el.textContent?.trim() || 'good';
-				    el.innerHTML = `<span class="t">${orig}</span><span class="c">|</span>`;
-				    const txt = el.querySelector('.t') as HTMLElement;
-				    const obs = new IntersectionObserver(([entry]) => {
-				      if (entry.isIntersecting) {
-				        obs.unobserve(el);
-				        (async () => {
-				          await wait(2000);
-				          let cur = orig;
-				          while (cur.length > 0) {
-				            await wait(50);
-				            cur = cur.slice(0, -1);
-				            txt.textContent = cur;
-				          }
-				          await wait(300);
-				          for (const char of 'great') {
-				            await wait(100);
-				            txt.textContent += char;
-				          }
-							if (txt.textContent.includes("great")) {
-								document.querySelector('.c').classList.add('hidden');
-							}
-				        })();
-				      }
-				    }, { threshold: 0.2 });
-				    obs.observe(el);
-				  });
+					const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
+					document.querySelectorAll('.typewriter').forEach(el => {
+						const orig = el.textContent?.trim() || 'good';
+					    el.innerHTML = `<span class="t">${orig}</span><span class="c">|</span>`;
+					    const txt = el.querySelector('.t') as HTMLElement;
+					    const obs = new IntersectionObserver(([entry]) => {
+					    	if (entry.isIntersecting) {
+						        obs.unobserve(el);
+						        (async () => {
+							        await wait(2000);
+
+							        let cur = orig;
+							        while (cur.length > 0) {
+							            await wait(50);
+							            cur = cur.slice(0, -1);
+							            txt.textContent = cur;
+							        }
+
+							        await wait(300);
+
+							        for (const char of 'great') {
+							            await wait(100);
+							            txt.textContent += char;
+							        }
+
+									await wait(300);
+
+									if (txt.textContent.includes("great")) { // in the future maybe apply gradient with animation after the typewriter animation changes
+										document.querySelector('.c').classList.add('hidden');
+									}
+						    	})();
+					    	}
+					    }, { threshold: 0.2 });
+					    obs.observe(el);
+					});
 				</script>
 				
 				<style is:global>
@@ -305,7 +311,7 @@ const featured = projects.filter(p => p.featured);
 				</style>
 
 				<h2 class="cta-title">
-					Let's build something <span class="serif typewriter">good</span>.
+					Let's build something <span class="serif typewriter gradient-text">good</span>.
 				</h2>
 				<p class="cta-lead">
 					Open to internships, collaborations, and interesting
