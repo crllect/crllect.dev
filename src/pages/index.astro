@@ -277,18 +277,21 @@ const featured = projects.filter(p => p.featured);
 				      if (entry.isIntersecting) {
 				        obs.unobserve(el);
 				        (async () => {
-				          await wait(3000);
+				          await wait(2000);
 				          let cur = orig;
 				          while (cur.length > 0) {
-				            await wait(200);
+				            await wait(50);
 				            cur = cur.slice(0, -1);
 				            txt.textContent = cur;
 				          }
-				          await wait(400);
+				          await wait(300);
 				          for (const char of 'great') {
 				            await wait(100);
 				            txt.textContent += char;
 				          }
+							if (txt.textContent.includes("great")) {
+								document.querySelector('.c').classList.add('hidden');
+							}
 				        })();
 				      }
 				    }, { threshold: 0.2 });
