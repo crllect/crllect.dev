@@ -47,7 +47,7 @@ export const projects: Project[] = [
 		slug: 'night-network',
 		name: 'Night Network',
 		role: 'Co-owner · Developer',
-		period: '2023 — Present',
+		period: '2023 - Present',
 		summary:
 			'A privacy- and access-focused web organization partnering with TitaniumNetwork. Developed Space, DaydreamX, and more.',
 		description: [
@@ -81,7 +81,7 @@ export const projects: Project[] = [
 		slug: 'daydreamx',
 		name: 'DaydreamX',
 		role: 'Co-developer',
-		period: '2024 — Present',
+		period: '2024 - Present',
 		summary:
 			'A browser inside a browser with extensions, themes, tab groups, multi-profile support, and cloud sync.',
 		description: [
@@ -112,7 +112,7 @@ export const projects: Project[] = [
 		slug: 'space',
 		name: 'Space',
 		role: 'Co-developer',
-		period: '2023 — Present',
+		period: '2023 - Present',
 		summary:
 			'A privacy-focused web app with steady traffic across the US and internationally.',
 		description: [
@@ -143,11 +143,11 @@ export const projects: Project[] = [
 		slug: 'proxdocs',
 		name: 'ProxDocs',
 		role: 'Creator · Developer',
-		period: '2026 — Present',
+		period: '2026 - Present',
 		summary:
 			'Documentation for building a web proxy from scratch, plus an interactive builder that generates a working project in your stack.',
 		description: [
-			'ProxDocs is a full tutorial on running your own web proxy with Scramjet, written to fill the gap between a short setup README and reading every upstream package yourself. It covers how a proxy actually works — the split between fetching bytes and rewriting them, transports, cross-origin isolation, and the internals of Scramjet — across concept, guide, and reference sections.',
+			'ProxDocs is a full tutorial on running your own web proxy with Scramjet, written to fill the gap between a short setup README and reading every upstream package yourself. It covers how a proxy actually works - the split between fetching bytes and rewriting them, transports, cross-origin isolation, and the internals of Scramjet - across concept, guide, and reference sections.',
 			'It also ships an interactive builder at /build that hands you a configured, working project instead of a starting point to adapt. You pick a language, package manager, runtime, server and frontend framework, transport, and features, and it generates the code to match. Written and maintained by me; AGPL-3.0.'
 		],
 		highlights: [
@@ -171,10 +171,40 @@ export const projects: Project[] = [
 		featured: true
 	},
 	{
+		slug: 'starlight',
+		name: 'Starlight',
+		role: 'Creator · Developer',
+		period: '2026 - Present',
+		summary:
+			'A fast, minimal Scramjet proxy frontend that renders pages without iframes - proxied content lives in a closed shadow DOM with scripts in Web Workers.',
+		description: [
+			'Starlight is a browser-shell frontend for the Scramjet interception proxy. Most proxies drop the page they are serving into an iframe; Starlight does not. It renders proxied content in a custom VirtualFrame - a closed shadow DOM whose scripts run in Web Workers, synchronized back to the shell over SharedArrayBuffer and Atomics for synchronous RPC.',
+			'Dropping iframes is what makes the rest possible: a cohesive disguise that cloaks the whole app as an ordinary status or workspace page, tighter control over the proxied document, and a smaller detection surface. Requests transport over a same-origin WebSocket through Epoxy or libcurl. Written in vanilla TypeScript on Bun, with Fastify serving and Vite bundling the shell; AGPL-3.0.'
+		],
+		highlights: [
+			'No iframes - proxied pages render in a closed shadow DOM with scripts in Web Workers',
+			'SharedArrayBuffer and Atomics for synchronous worker-to-shell RPC',
+			'Cohesive disguise that cloaks the app as a plausible status or workspace page',
+			'Epoxy and libcurl transports over a same-origin WebSocket'
+		],
+		tags: ['TypeScript', 'Scramjet', 'Bun', 'Fastify', 'Vite'],
+		links: [
+			{
+				label: 'github.com/Night-N3twork/Starlight',
+				href: 'https://github.com/Night-N3twork/Starlight'
+			}
+		],
+		image: {
+			src: '/assets/projects/starlight.webp',
+			alt: 'The Starlight browser shell on its home page, with a curved toolbar, an stl://home address bar, and a latency readout'
+		},
+		featured: true
+	},
+	{
 		slug: 'oxide',
 		name: 'Oxide',
 		role: 'Developer',
-		period: '2026 — Present',
+		period: '2026 - Present',
 		summary:
 			'The official community site for TitaniumNetwork, one of the largest web proxy communities online.',
 		description: [
@@ -205,39 +235,33 @@ export const projects: Project[] = [
 	},
 	{
 		slug: 'aspine',
-		name: 'Aspine v3',
+		name: 'Aspine 5',
 		role: 'Developer · Maintainer',
-		period: '2024 — 2025',
+		period: '2026 - Present',
 		summary:
-			"An open-source, modern frontend for my school district's Aspen grade system.",
+			"A modern, open-source frontend for my school district's Aspen grade system, with live grade simulation and a clean Starlight-style UI.",
 		description: [
-			"Aspine is an open-source, modern frontend for my school district's Aspen student information system — a much nicer way for students to view grades than the stock interface.",
-			'I work on the v3 rewrite. The project is currently dormant and being picked back up.'
+			"Aspine is an open-source, modern frontend for my school district's Aspen student information system - a much nicer way for students to view grades than the stock interface. Aspine 5 is a full rewrite.",
+			'It signs into Aspen and builds grades, schedule, reports, attendance, and GPA, then lets you edit, add, or remove assignment scores to simulate how your grade would change - showing the real Aspen grade alongside the calculated one. Built with Astro, Preact, and Bun under a layered Starlight-style browser chrome; it reads Aspen through a stealth headless browser and exports or imports your data as JSON.'
 		],
 		highlights: [
-			'Modern, open-source grade frontend for a real school system',
-			'Built for actual students',
-			'v3 rewrite — being revived'
+			'Grades, schedule, reports, attendance, and GPA in one modern UI',
+			'Edit assignments to simulate grades, Aspen vs calculated side by side',
+			'Test-correction support and JSON export / import',
+			'Starlight-style chrome on Astro, Preact, and Bun'
 		],
-		tags: [
-			'Astro',
-			'Preact',
-			'Bun',
-			'JavaScript',
-			'TypeScript',
-			'Open source'
-		],
+		tags: ['Astro', 'Preact', 'Bun', 'TypeScript', 'Open source'],
 		links: [
 			{
-				label: 'github.com/Aspine/aspine3',
-				href: 'https://github.com/Aspine/aspine3'
+				label: 'github.com/crllect/Aspine5',
+				href: 'https://github.com/crllect/Aspine5'
 			}
 		],
 		image: {
 			src: '/assets/projects/aspine.webp',
-			alt: 'The Aspine v3 landing page, reading "Welcome to Aspine v3 — Aspen, reborn"'
+			alt: 'The Aspine 5 demo grades view, with a class list and AP Calculus BC category weights and assignments'
 		},
-		featured: false
+		featured: true
 	},
 	{
 		slug: 'harvard-market',
@@ -245,7 +269,7 @@ export const projects: Project[] = [
 		role: 'Designer · Developer',
 		period: '2025',
 		summary:
-			'A polished online-ordering site for a neighborhood Cambridge market — light/dark, cart, and order flow.',
+			'A polished online-ordering site for a neighborhood Cambridge market - light/dark, cart, and order flow.',
 		description: [
 			'A from-scratch online-ordering site for Harvard Market, a neighborhood market and kitchen in Cambridge. Browse the menu, build a cart, and place a pickup order. Pay in person.',
 			'Built with Next.js and Tailwind: editorial light/dark theming, an accessible cart, and an order flow that emails the kitchen. A compact end-to-end product build.'
@@ -342,7 +366,7 @@ export const experience: ExperienceItem[] = [
 	{
 		org: 'Night Network',
 		role: 'Co-owner · Developer',
-		period: '2023 — Present',
+		period: '2023 - Present',
 		summary:
 			'Co-own and help run a privacy- and access-focused web organization: coordinating development across a distributed team, running our sub-organizations, and building the products themselves.',
 		href: 'https://night-network.org/'
@@ -367,8 +391,8 @@ export const recognition: Recognition[] = [
 	{
 		title: '1st place',
 		org: 'HacKnight',
-		period: '2024 – 2025',
-		note: 'Hack Club–affiliated learnathon & hackathon.'
+		period: '2024 - 2025',
+		note: 'Hack Club-affiliated learnathon & hackathon.'
 	},
 	{
 		title: 'Most technically complex project',

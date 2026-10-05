@@ -140,7 +140,7 @@ const featured = projects.filter(p => p.featured);
 	<section class="container section" id="work">
 		<Reveal client:visible>
 			<SectionHeading title="Things I've built">
-				A few of the products I've shipped — most are live and in daily
+				A few of the products I've shipped - most are live and in daily
 				use.
 			</SectionHeading>
 		</Reveal>
@@ -269,42 +269,52 @@ const featured = projects.filter(p => p.featured);
 			<div class="glow-card contact-cta">
 				<script>
 					const wait = (ms: number) => new Promise(r => setTimeout(r, ms));
-					document.querySelectorAll('.typewriter').forEach(el => {
+					const play = (el: HTMLElement) => {
+						if (el.dataset.twPlayed) return;
+						el.dataset.twPlayed = '1';
 						const orig = el.textContent?.trim() || 'good';
-					    el.innerHTML = `<span class="t">${orig}</span><span class="c">|</span>`;
-					    const txt = el.querySelector('.t') as HTMLElement;
-					    const obs = new IntersectionObserver(([entry]) => {
-					    	if (entry.isIntersecting) {
-						        obs.unobserve(el);
-						        (async () => {
-							        await wait(2000);
-
-							        let cur = orig;
-							        while (cur.length > 0) {
-							            await wait(50);
-							            cur = cur.slice(0, -1);
-							            txt.textContent = cur;
-							        }
-
-							        await wait(300);
-
-							        for (const char of 'great') {
-							            await wait(100);
-							            txt.textContent += char;
-							        }
-
-									await wait(300);
-
-									if (txt.textContent.includes("great")) { // in the future maybe apply gradient with animation after the typewriter animation changes
-										document.querySelector('.c').classList.add('hidden');
-									}
-						    	})();
-					    	}
-					    }, { threshold: 0.2 });
-					    obs.observe(el);
-					});
+						el.innerHTML = `<span class="t">${orig}</span><span class="c">|</span>`;
+						const txt = el.querySelector('.t') as HTMLElement;
+						(async () => {
+							await wait(1400);
+							let cur = orig;
+							while (cur.length > 0) {
+								await wait(35);
+								cur = cur.slice(0, -1);
+								txt.textContent = cur;
+							}
+							await wait(200);
+							for (const char of 'great') {
+								await wait(70);
+								txt.textContent += char;
+							}
+							await wait(200);
+							if (txt.textContent.includes("great")) {
+								document.querySelector('.c').classList.add('hidden');
+							}
+						})();
+					};
+					const arm = (el: HTMLElement) => {
+						if (el.dataset.twArmed) return;
+						el.dataset.twArmed = '1';
+						const obs = new IntersectionObserver(
+							([entry]) => {
+								if (!entry.isIntersecting) return;
+								obs.disconnect();
+								play(el);
+							},
+							{ threshold: 0.6 }
+						);
+						obs.observe(el);
+					};
+					const run = () =>
+						document
+							.querySelectorAll<HTMLElement>('.typewriter')
+							.forEach(arm);
+					document.addEventListener('astro:page-load', run);
+					run();
 				</script>
-				
+
 				<style is:global>
 				  .c { animation: b 0.75s step-end infinite; }
 				  @keyframes b { from, to { opacity: 1 } 50% { opacity: 0 } }
